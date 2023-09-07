@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Your App Title',
+      title: 'GDSJ-Points',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
