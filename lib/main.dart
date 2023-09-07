@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main_screen.dart'; // Import your MainScreen widget
+import 'main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainScreen(), // Set MainScreen as the initial screen
+      home: const MainScreen(),
     );
   }
 }

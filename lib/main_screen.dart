@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -12,17 +13,30 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   Future<List<dynamic>> fetchLeaderboardData() async {
-    final response = await http.post(
-      Uri.parse('https://shy-fawn-fatigues.cyclic.app/leaderboard'),
-      headers: {'Content-Type': 'application/json'},
-      body: '{"secret": "onlyforgdscajce"}',
-    );
+    try {
+      final response = await http.post(
+        Uri.parse('https://shy-fawn-fatigues.cyclic.app/leaderboard'),
+        headers: {'Content-Type': 'application/json'},
+        body: '{"secret": "onlyforgdscajce"}',
+      );
 
-    if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body);
-      return data;
-    } else {
-      throw Exception('Failed to load leaderboard data');
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        return data;
+      } else {
+        if (kDebugMode) {
+          print('API Request Failed: ${response.statusCode}');
+        }
+        if (kDebugMode) {
+          print('API Response: ${response.body}');
+        }
+        throw Exception('Failed to load leaderboard data');
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error: $e');
+      }
+      throw Exception('An error occurred while fetching data');
     }
   }
 
