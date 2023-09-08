@@ -16,19 +16,25 @@ class _LandingState extends State<Landing> {
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Padding(
+              padding: EdgeInsets.only(top: 70, right: 40, left: 40),
+              child: Image.asset("images/gdsc.png")),
+          
           const Padding(
-              padding: EdgeInsets.only(top: 130),
+              padding: EdgeInsets.only(top: 90, bottom: 50),
               child: Center(
                 child: Text(
-                  'Welcome to GDSJ',
+                  'Welcome to GCSJ',
                   style: TextStyle(
-                    fontSize: 22,
+                    color: Color.fromARGB(255, 220, 167, 10),
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               )),
+          Image.asset("images/supercloud.png"),
           SizedBox(
-            height: MediaQuery.of(context).size.height / 2.5,
+            height: MediaQuery.of(context).size.height / 10,
           ),
           SizedBox(
             height: 50,
@@ -58,8 +64,8 @@ class _LandingState extends State<Landing> {
               style: ButtonStyle(
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                          ))),
+                borderRadius: BorderRadius.circular(18.0),
+              ))),
               child: const Text("Group Leaderboard"),
               onPressed: () {
                 Navigator.push(

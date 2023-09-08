@@ -81,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
               return const Text('No data available');
             } else {
               final leaderboardData = snapshot.data;
-              dynamic indScore = leaderboardData[0]['score'];
+              // dynamic indScore = leaderboardData[0]['score'];
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
