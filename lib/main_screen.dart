@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
       final response = await http.post(
         Uri.parse('https://shy-fawn-fatigues.cyclic.app/leaderboard'),
         headers: {'Content-Type': 'application/json'},
-        body: '{"secret": "onlyforgdscajce"}',
+        body: {"secret": "onlyforgdscajce"},
       );
 
       if (response.statusCode == 200) {
