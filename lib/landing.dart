@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gdsj_points/main_screen.dart';
-import "package:gdsj_points/group.dart";
+import 'package:GCSJ/main_screen.dart';
+import "package:GCSJ/group.dart";
 
 class Landing extends StatefulWidget {
   const Landing({super.key});
