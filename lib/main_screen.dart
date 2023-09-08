@@ -1,3 +1,5 @@
+import 'dart:ffi';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -70,8 +72,8 @@ class _MainScreenState extends State<MainScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Container(
                   alignment: Alignment.center,
-                  width: 400,
-                  height: 450,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
                   child: const CircularProgressIndicator());
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
@@ -79,6 +81,7 @@ class _MainScreenState extends State<MainScreen> {
               return const Text('No data available');
             } else {
               final leaderboardData = snapshot.data;
+              dynamic indScore = leaderboardData[0]['score'];
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,16 +106,41 @@ class _MainScreenState extends State<MainScreen> {
                         height: 90,
                         decoration: BoxDecoration(
                           color: Colors.blue,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         padding: const EdgeInsets.all(16),
-                        child: const Text(
-                          'Your Individual Score: ${42}',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            RotateAnimatedText(
+                                'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
+                                duration: Duration(milliseconds: 4000),
+                                textStyle: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    backgroundColor: Colors.blue)),
+                            RotateAnimatedText(
+                                'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
+                                duration: Duration(milliseconds: 4000),
+                                textStyle: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
+                          ],
+                          isRepeatingAnimation: true,
+                          repeatForever: true,
+                          
+                          pause: Duration(milliseconds: 800),
                         ),
+
+                        // child: Text(
+                        //   "Google Cloud Computing Foundations Deadline: 2nd Oct, 2023, 10:30 pm IST\nGenerative AI Arcade Game Deadline:30th September, 2023, 5pm IST",
+                        //   // 'Your Individual Score: $indScore',
+                        //   style: const TextStyle(
+                        //     color: Colors.white,
+                        //     fontSize: 15,
+                        //   ),
+                        // ),
                       ),
                     ),
                   ),
@@ -124,7 +152,7 @@ class _MainScreenState extends State<MainScreen> {
                         height: 450,
                         decoration: BoxDecoration(
                           color: Colors.green,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         padding: const EdgeInsets.all(16),
                         child: Column(

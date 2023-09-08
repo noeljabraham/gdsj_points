@@ -17,7 +17,7 @@ class _LandingState extends State<Landing> {
       body: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           const Padding(
-              padding: EdgeInsets.only(top: 150),
+              padding: EdgeInsets.only(top: 130),
               child: Center(
                 child: Text(
                   'Welcome to GDSJ',
@@ -28,12 +28,17 @@ class _LandingState extends State<Landing> {
                 ),
               )),
           SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 2.5,
           ),
           SizedBox(
             height: 50,
             width: 200,
             child: ElevatedButton(
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+              ))),
               child: const Text("Individual Leaderboard"),
               onPressed: () {
                 Navigator.push(
@@ -50,6 +55,11 @@ class _LandingState extends State<Landing> {
             height: 50,
             width: 200,
             child: ElevatedButton(
+              style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          ))),
               child: const Text("Group Leaderboard"),
               onPressed: () {
                 Navigator.push(
