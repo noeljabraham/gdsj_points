@@ -42,16 +42,16 @@ class _GroupScreenState extends State<GroupScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(top: 36, left: 16),
+              const Center(child: Padding(
+                padding: EdgeInsets.only(top: 36, bottom: 15),
                 child: Text(
-                  'GDSJ-Group Scores',
+                  'Group Leaderboard',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
+              ),),
               FutureBuilder(
                 future: fetchGroupScores(),
                 builder: (context, snapshot) {
@@ -59,7 +59,7 @@ class _GroupScreenState extends State<GroupScreen> {
                     return Container(
                         alignment: Alignment.center,
                         width: 400,
-                        height: 450,
+                        height: 550,
                         child: const CircularProgressIndicator());
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
@@ -73,7 +73,7 @@ class _GroupScreenState extends State<GroupScreen> {
                         padding: const EdgeInsets.all(16),
                         child: Container(
                           width: 400,
-                          height: 450,
+                          height: 550,
                           decoration: BoxDecoration(
                             color: Colors.green,
                             borderRadius: BorderRadius.circular(10),
@@ -82,7 +82,7 @@ class _GroupScreenState extends State<GroupScreen> {
                           child: Column(
                             children: [
                               const Text(
-                                'Group Scores',
+                                'Group Leaderboard',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -94,7 +94,7 @@ class _GroupScreenState extends State<GroupScreen> {
                                   itemBuilder: (context, index) {
                                     final entry = groupScores?[index];
                                     return ListTile(
-                                      title: Text(entry?['groupName'] ?? ''),
+                                      title: Text(entry?['group'] ?? ''),
                                       subtitle: Text(
                                           'Score: ${entry?['score'] ?? ''}'),
                                     );

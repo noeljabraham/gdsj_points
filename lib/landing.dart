@@ -54,7 +54,7 @@ class _LandingState extends State<Landing> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Group()),
+                  MaterialPageRoute(builder: (context) => const GroupScreen()),
                 );
               },
             ),
