@@ -62,7 +62,7 @@ class _GroupScreenState extends State<GroupScreen> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 36, bottom: 15),
                       child: Text(
-                        'Group Leaderboard',
+                        'GCSJ Leaderboard',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class _GroupScreenState extends State<GroupScreen> {
                       padding: const EdgeInsets.all(16),
                       child: Container(
                         width: 400,
-                        height: 550,
+                        height: 730,
                         decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(20),

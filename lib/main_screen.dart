@@ -90,7 +90,7 @@ class _MainScreenState extends State<MainScreen> {
                     child: Padding(
                       padding: EdgeInsets.only(top: 36),
                       child: Text(
-                        'Individual Leaderboard',
+                        'GCSJ Leaderboard',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -103,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
                       padding: const EdgeInsets.all(16),
                       child: Container(
                         width: 400,
-                        height: 90,
+                        height: 100,
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(20),
@@ -113,7 +113,7 @@ class _MainScreenState extends State<MainScreen> {
                           animatedTexts: [
                             RotateAnimatedText(
                                 'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
-                                duration: Duration(milliseconds: 4000),
+                                duration: const Duration(milliseconds: 4000),
                                 textStyle: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -121,7 +121,7 @@ class _MainScreenState extends State<MainScreen> {
                                     backgroundColor: Colors.blue)),
                             RotateAnimatedText(
                                 'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
-                                duration: Duration(milliseconds: 4000),
+                                duration: const Duration(milliseconds: 4000),
                                 textStyle: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -129,8 +129,7 @@ class _MainScreenState extends State<MainScreen> {
                           ],
                           isRepeatingAnimation: true,
                           repeatForever: true,
-                          
-                          pause: Duration(milliseconds: 800),
+                          pause: const Duration(milliseconds: 800),
                         ),
 
                         // child: Text(
@@ -149,7 +148,7 @@ class _MainScreenState extends State<MainScreen> {
                       padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
                       child: Container(
                         width: 400,
-                        height: 450,
+                        height: 630,
                         decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(20),
