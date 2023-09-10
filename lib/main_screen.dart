@@ -103,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
                           'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
                           duration: const Duration(milliseconds: 4000),
                           textStyle: TextStyle(
-                              fontSize: screenWidth * 0.038,
+                              fontSize: screenWidth * 0.036,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               backgroundColor: Colors.blue)),
@@ -111,7 +111,7 @@ class _MainScreenState extends State<MainScreen> {
                           'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
                           duration: const Duration(milliseconds: 4000),
                           textStyle: TextStyle(
-                              fontSize: screenWidth * 0.038,
+                              fontSize: screenWidth * 0.036,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
                     ],
@@ -151,10 +151,13 @@ class _MainScreenState extends State<MainScreen> {
                         padding: EdgeInsets.all(screenWidth * 0.02),
                         child: Row(
                           children: [
-                            Expanded(
+                            SizedBox(
+                              height: screenHeight*0.08,
+                              width: screenWidth*0.63,
                               child: TextField(
                                 controller: _searchController,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(10),
                                   suffixIcon: IconButton(
                                       icon: Icon(Icons.clear),
                                       onPressed: () {    
@@ -173,6 +176,7 @@ class _MainScreenState extends State<MainScreen> {
                                   filled: true,
                                   fillColor: Colors.white,
                                   border: OutlineInputBorder(
+                                    
                                     borderRadius: BorderRadius.circular(
                                         20.0), // Adjust the radius as needed
                                   ),
