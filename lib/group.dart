@@ -202,7 +202,7 @@ class _GroupScreenState extends State<GroupScreen> {
                           itemBuilder: (context, index) {
                             final entry = groupScores[index];
                             return ListTile(
-                              title: Text(entry?['group'] ?? ''),
+                              title: Text("${index+1}. ${entry['group']}"),
                               subtitle: Text('Score: ${entry?['score'] ?? ''}'),
                             );
                           },

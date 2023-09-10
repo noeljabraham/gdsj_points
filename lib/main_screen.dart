@@ -215,7 +215,8 @@ class _MainScreenState extends State<MainScreen> {
                             final entry = leaderboardData[index];
                            
                             return ListTile(
-                              title: Text(entry['name']),
+                              
+                              title: Text("${index+1}. ${entry['name']}"),
                               subtitle: Text('Score: ${entry['score']}'),
                             );
                           },
