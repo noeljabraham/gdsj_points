@@ -1,18 +1,17 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class GroupScreen extends StatefulWidget {
-  const GroupScreen({super.key});
+  const GroupScreen({Key? key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _GroupScreenState createState() => _GroupScreenState();
 }
 
 class _GroupScreenState extends State<GroupScreen> {
-  // String secret = "onlyforgdscajce";
   final body = {"secret": "onlyforgdscajce"};
 
   Future fetchGroupScores() async {
@@ -36,6 +35,9 @@ class _GroupScreenState extends State<GroupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -44,10 +46,11 @@ class _GroupScreenState extends State<GroupScreen> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Container(
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: const CircularProgressIndicator());
+                alignment: Alignment.center,
+                width: screenWidth,
+                height: screenHeight,
+                child: const CircularProgressIndicator(),
+              );
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -58,13 +61,15 @@ class _GroupScreenState extends State<GroupScreen> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 36, bottom: 15),
+                      padding: EdgeInsets.only(
+                        top: screenHeight * 0.05,
+                      ),
                       child: Text(
                         'GCSJ Leaderboard',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: screenWidth * 0.05,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -72,22 +77,58 @@ class _GroupScreenState extends State<GroupScreen> {
                   ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: EdgeInsets.all(screenWidth * 0.04),
                       child: Container(
-                        width: 400,
-                        height: 730,
+                        width: screenWidth * 0.9,
+                        height: screenHeight * 0.12,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: EdgeInsets.all(screenWidth * 0.04),
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            RotateAnimatedText(
+                                'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
+                                duration: const Duration(milliseconds: 4000),
+                                textStyle: TextStyle(
+                                    fontSize: screenWidth * 0.03,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    backgroundColor: Colors.blue)),
+                            RotateAnimatedText(
+                                'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
+                                duration: const Duration(milliseconds: 4000),
+                                textStyle: TextStyle(
+                                    fontSize: screenWidth * 0.03,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
+                          ],
+                          isRepeatingAnimation: true,
+                          repeatForever: true,
+                          pause: const Duration(milliseconds: 800),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(screenWidth * 0.04),
+                      child: Container(
+                        width: screenWidth * 0.9,
+                        height: screenHeight * 0.66,
                         decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: const EdgeInsets.all(16),
+                        padding: EdgeInsets.all(screenWidth * 0.04),
                         child: Column(
                           children: [
-                            const Text(
+                            Text(
                               'Group Leaderboard',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: screenWidth * 0.05,
                               ),
                             ),
                             Expanded(

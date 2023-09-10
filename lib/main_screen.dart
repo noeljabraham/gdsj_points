@@ -6,15 +6,13 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+  const MainScreen({Key? key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // String secret = "onlyforgdscajce";
   final body = {"secret": "onlyforgdscajce"};
 
   Future fetchLeaderboardData() async {
@@ -34,35 +32,13 @@ class _MainScreenState extends State<MainScreen> {
     } catch (e) {
       return e;
     }
-    // try {
-    //   final response = await http.post(
-    //     Uri.parse('https://shy-fawn-fatigues.cyclic.app/leaderboard'),
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: {"secret": secret},
-    //   );
-
-    //   if (response.statusCode == 200) {
-    //     final List<dynamic> data = json.decode(response.body);
-    //     return data;
-    //   } else {
-    //     if (kDebugMode) {
-    //       print('API Request Failed: ${response.statusCode}');
-    //     }
-    //     if (kDebugMode) {
-    //       print('API Response: ${response.body}');
-    //     }
-    //     throw Exception('Failed to load leaderboard data');
-    //   }
-    // } catch (e) {
-    //   if (kDebugMode) {
-    //     print('Error: $e');
-    //   }
-    //   throw Exception('An error occurred while fetching data');
-    // }
   }
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
@@ -71,28 +47,28 @@ class _MainScreenState extends State<MainScreen> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Container(
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: const CircularProgressIndicator());
+                alignment: Alignment.center,
+                width: screenWidth,
+                height: screenHeight,
+                child: const CircularProgressIndicator(),
+              );
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
               return const Text('No data available');
             } else {
               final leaderboardData = snapshot.data;
-              // dynamic indScore = leaderboardData[0]['score'];
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 36),
+                      padding: EdgeInsets.only(top: screenHeight * 0.05),
                       child: Text(
                         'GCSJ Leaderboard',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: screenWidth * 0.05,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -100,30 +76,30 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.all(16),
+                      padding: EdgeInsets.all(screenWidth * 0.04),
                       child: Container(
-                        width: 400,
-                        height: 100,
+                        width: screenWidth * 0.9,
+                        height: screenHeight * 0.12,
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: const EdgeInsets.all(16),
+                        padding: EdgeInsets.all(screenWidth * 0.04),
                         child: AnimatedTextKit(
                           animatedTexts: [
                             RotateAnimatedText(
                                 'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
                                 duration: const Duration(milliseconds: 4000),
-                                textStyle: const TextStyle(
-                                    fontSize: 15,
+                                textStyle: TextStyle(
+                                    fontSize: screenWidth * 0.03,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                     backgroundColor: Colors.blue)),
                             RotateAnimatedText(
                                 'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
                                 duration: const Duration(milliseconds: 4000),
-                                textStyle: const TextStyle(
-                                    fontSize: 15,
+                                textStyle: TextStyle(
+                                    fontSize: screenWidth * 0.03,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white)),
                           ],
@@ -131,36 +107,32 @@ class _MainScreenState extends State<MainScreen> {
                           repeatForever: true,
                           pause: const Duration(milliseconds: 800),
                         ),
-
-                        // child: Text(
-                        //   "Google Cloud Computing Foundations Deadline: 2nd Oct, 2023, 10:30 pm IST\nGenerative AI Arcade Game Deadline:30th September, 2023, 5pm IST",
-                        //   // 'Your Individual Score: $indScore',
-                        //   style: const TextStyle(
-                        //     color: Colors.white,
-                        //     fontSize: 15,
-                        //   ),
-                        // ),
                       ),
                     ),
                   ),
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
+                      padding: EdgeInsets.fromLTRB(
+                        screenWidth * 0.04,
+                        screenHeight * 0.01,
+                        screenWidth * 0.04,
+                        screenHeight * 0.01,
+                      ),
                       child: Container(
-                        width: 400,
-                        height: 630,
+                        width: screenWidth * 0.9,
+                        height: screenHeight * 0.66,
                         decoration: BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: const EdgeInsets.all(16),
+                        padding: EdgeInsets.all(screenWidth * 0.04),
                         child: Column(
                           children: [
-                            const Text(
+                            Text(
                               'Individual Leaderboard',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 20,
+                                fontSize: screenWidth * 0.05,
                               ),
                             ),
                             Expanded(
