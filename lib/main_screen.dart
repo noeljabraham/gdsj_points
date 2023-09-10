@@ -18,8 +18,9 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final body = {"secret": "onlyforgdscajce"};
   TextEditingController _searchController = TextEditingController();
-  String? searchedName;
-  List<dynamic> leaderboardData = []; // Initialize the list
+  String? searchedName = "";
+  List<dynamic> leaderboardData = [];
+  List<dynamic> originalLeaderboardData = []; // Initialize the list
 
   Future fetchLeaderboardData() async {
     try {
@@ -43,12 +44,12 @@ class _MainScreenState extends State<MainScreen> {
   List<dynamic> searchByName(List<dynamic> data, String name) {
     if (name.isEmpty) {
       return data;
+    } else {
+      return data.where((entry) {
+        final entryName = entry['name'].toLowerCase();
+        return entryName.contains(name.toLowerCase());
+      }).toList();
     }
-
-    return data.where((entry) {
-      final entryName = entry['name'].toLowerCase();
-      return entryName.contains(name.toLowerCase());
-    }).toList();
   }
 
   @override
@@ -57,6 +58,7 @@ class _MainScreenState extends State<MainScreen> {
     fetchLeaderboardData().then((data) {
       setState(() {
         leaderboardData = data;
+        originalLeaderboardData = leaderboardData;
       });
     });
   }
@@ -101,7 +103,7 @@ class _MainScreenState extends State<MainScreen> {
                           'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
                           duration: const Duration(milliseconds: 4000),
                           textStyle: TextStyle(
-                              fontSize: screenWidth * 0.03,
+                              fontSize: screenWidth * 0.038,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               backgroundColor: Colors.blue)),
@@ -109,7 +111,7 @@ class _MainScreenState extends State<MainScreen> {
                           'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
                           duration: const Duration(milliseconds: 4000),
                           textStyle: TextStyle(
-                              fontSize: screenWidth * 0.03,
+                              fontSize: screenWidth * 0.038,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
                     ],
@@ -153,6 +155,20 @@ class _MainScreenState extends State<MainScreen> {
                               child: TextField(
                                 controller: _searchController,
                                 decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
+                                      onPressed: () {    
+                                                                       
+                                // Update the UI with the filtered data
+                                setState(() {
+                                  _searchController.clear();
+                                  searchedName = "";
+                                  leaderboardData = originalLeaderboardData;
+                                  
+                                 
+                                });
+                                
+                                      }),
                                   hintText: 'Search by name',
                                   filled: true,
                                   fillColor: Colors.white,
@@ -163,7 +179,9 @@ class _MainScreenState extends State<MainScreen> {
                                 ),
                                 onChanged: (value) {
                                   setState(() {
+                                    
                                     searchedName = value;
+                                    print(searchedName);
                                   });
                                 },
                               ),
@@ -171,6 +189,7 @@ class _MainScreenState extends State<MainScreen> {
                             IconButton(
                               icon: Icon(Icons.search),
                               onPressed: () {
+                                
                                 // Call the search function to filter the leaderboardData
                                 final filteredData = searchByName(
                                     leaderboardData, searchedName ?? "");
@@ -188,7 +207,9 @@ class _MainScreenState extends State<MainScreen> {
                         child: ListView.builder(
                           itemCount: leaderboardData.length,
                           itemBuilder: (context, index) {
+                            
                             final entry = leaderboardData[index];
+                           
                             return ListTile(
                               title: Text(entry['name']),
                               subtitle: Text('Score: ${entry['score']}'),

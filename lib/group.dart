@@ -18,6 +18,7 @@ class _GroupScreenState extends State<GroupScreen> {
   TextEditingController _searchController = TextEditingController();
   String? searchedName;
   List<dynamic> groupScores = [];
+  List<dynamic> originalLeaderboardData = [];
 
   Future fetchGroupScores() async {
     try {
@@ -55,6 +56,7 @@ class _GroupScreenState extends State<GroupScreen> {
     fetchGroupScores().then((data) {
       setState(() {
         groupScores = data;
+        originalLeaderboardData = groupScores;
       });
     });
   }
@@ -101,7 +103,7 @@ class _GroupScreenState extends State<GroupScreen> {
                           'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
                           duration: const Duration(milliseconds: 4000),
                           textStyle: TextStyle(
-                              fontSize: screenWidth * 0.03,
+                              fontSize: screenWidth * 0.038,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               backgroundColor: Colors.blue)),
@@ -109,7 +111,7 @@ class _GroupScreenState extends State<GroupScreen> {
                           'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
                           duration: const Duration(milliseconds: 4000),
                           textStyle: TextStyle(
-                              fontSize: screenWidth * 0.03,
+                              fontSize: screenWidth * 0.038,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
                     ],
@@ -148,6 +150,20 @@ class _GroupScreenState extends State<GroupScreen> {
                               child: TextField(
                                 controller: _searchController,
                                 decoration: InputDecoration(
+                                  suffixIcon: IconButton(
+                                      icon: Icon(Icons.clear),
+                                      onPressed: () {    
+                                                                       
+                                // Update the UI with the filtered data
+                                setState(() {
+                                  _searchController.clear();
+                                  searchedName = "";
+                                  groupScores = originalLeaderboardData;
+                                  
+                                 
+                                });
+                                
+                                      }),
                                   hintText:
                                       'Search by group name', // Change hint text
                                   filled: true,

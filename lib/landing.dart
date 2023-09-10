@@ -44,8 +44,8 @@ class _LandingState extends State<Landing> {
                   height: screenHeight * 0.1,
                 ),
                 SizedBox(
-                  height: screenHeight * 0.05,
-                  width: screenWidth * 0.5,
+                  height: screenHeight * 0.055,
+                  width: screenWidth * 0.6,
                   child: ElevatedButton(
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -69,8 +69,8 @@ class _LandingState extends State<Landing> {
                   height: 20,
                 ),
                 SizedBox(
-                  height: screenHeight * 0.05,
-                  width: screenWidth * 0.5,
+                  height: screenHeight * 0.055,
+                  width: screenWidth * 0.6,
                   child: ElevatedButton(
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
