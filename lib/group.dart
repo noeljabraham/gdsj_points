@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:url_launcher/url_launcher.dart';
 
 class GroupScreen extends StatefulWidget {
   const GroupScreen({Key? key});
@@ -189,6 +190,29 @@ class _GroupScreenState extends State<GroupScreen> {
                             );
                           },
                         ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to the https://gdsc-ajce.github.io/home/individual.html page
+                              launchUrl(
+                                Uri.parse(
+                                    'https://gdsc-ajce.github.io/home/group.html'),
+                              );
+                            },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Icon(Icons.public),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

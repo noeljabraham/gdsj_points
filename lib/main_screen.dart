@@ -5,7 +5,8 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'dart:convert' show json;
+import 'package:url_launcher/url_launcher.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key});
@@ -194,6 +195,29 @@ class _MainScreenState extends State<MainScreen> {
                             );
                           },
                         ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              // Navigate to the https://gdsc-ajce.github.io/home/individual.html page
+                              launchUrl(
+                                Uri.parse(
+                                    'https://gdsc-ajce.github.io/home/individual.html'),
+                              );
+                            },
+                            child: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Icon(Icons.public),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
