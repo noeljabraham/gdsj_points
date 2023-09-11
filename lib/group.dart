@@ -138,7 +138,7 @@ class _GroupScreenState extends State<GroupScreen> {
                                 'Google Cloud Computing Foundations\nDeadline: 2nd Oct, 2023, 10:30 pm',
                                 duration: const Duration(milliseconds: 4000),
                                 textStyle: TextStyle(
-                                    fontSize: screenWidth * 0.038,
+                                    fontSize: screenWidth * 0.037,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                     backgroundColor: Colors.blue)),
@@ -146,7 +146,7 @@ class _GroupScreenState extends State<GroupScreen> {
                                 'Generative AI Arcade Game\nDeadline: 30th September, 2023, 5pm',
                                 duration: const Duration(milliseconds: 4000),
                                 textStyle: TextStyle(
-                                    fontSize: screenWidth * 0.038,
+                                    fontSize: screenWidth * 0.037,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white)),
                           ],
