@@ -3,18 +3,11 @@
 [![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](https://github.com/noeljabraham/gdsj_points/blob/main/License)
 
 
+##Overview
 
-This Flutter/Dart app was developed for the Google Cloud Study Jam event to help participants track real-time scores and competitive rankings.
 
-## Features
+The app was developed for the Google Cloud Study Jam Cohort 1 conducted from September 6, 2023, to October 2, 2023, it provides real-time score tracking and competitive rankings. Users can monitor their performance throughout the event, ensuring a competitive edge.
 
-- Real-time score tracking.
-- Competitive ranking display.
-- [Add any other features here]
+##License
 
-## Getting Started
-
-1. Clone this repository:
-
-   ```bash
-   git clone https://github.com/YourUsername/YourRepoName.git
+This project is licensed under the [![All Rights Reserved](https://github.com/noeljabraham/gdsj_points/blob/main/License) - see the LICENSE file for details.
