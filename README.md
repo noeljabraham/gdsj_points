@@ -1,16 +1,20 @@
-# gdsj_points
+# Google Cloud Study Jam Score Tracking App
 
-A new Flutter project.
+![GitHub repo size](https://img.shields.io/github/repo-size/YourUsername/YourRepoName)
+![GitHub stars](https://img.shields.io/github/stars/YourUsername/YourRepoName)
+![GitHub forks](https://img.shields.io/github/forks/YourUsername/YourRepoName)
+
+This Flutter/Dart app was developed for the Google Cloud Study Jam event to help participants track real-time scores and competitive rankings.
+
+## Features
+
+- Real-time score tracking.
+- Competitive ranking display.
+- [Add any other features here]
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Clone this repository:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   ```bash
+   git clone https://github.com/YourUsername/YourRepoName.git
