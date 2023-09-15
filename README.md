@@ -10,4 +10,4 @@ The app was developed for the Google Cloud Study Jam Cohort 1 conducted from Sep
 
 ## License
 
-This project is licensed under the [![All Rights Reserved](https://github.com/noeljabraham/gdsj_points/blob/main/License) - see the LICENSE file for details.
+This project is licensed under the [! All Rights Reserved](https://github.com/noeljabraham/gdsj_points/blob/main/License) - see the LICENSE file for details.
