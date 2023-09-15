@@ -1,6 +1,6 @@
 # Google Cloud Study Jam Score Tracking App
 
-[![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](https://github.com/YourUsername/YourRepoName/blob/main/LICENSE)
+[![License: All Rights Reserved](https://img.shields.io/badge/License-All%20Rights%20Reserved-red.svg)](https://github.com/noeljabraham/gdsj_points/blob/main/License)
 
 
 
